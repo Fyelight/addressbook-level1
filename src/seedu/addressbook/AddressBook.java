@@ -164,12 +164,12 @@ public class AddressBook {
     /*
      * Number of arguments inputed to determine if there are files given
      */
-    private static final int LIMIT_ARGS = 2;
+    private static final int MAX_ARGS = 2;
     private static final int FILE_GIVEN = 1;
     private static final int NO_FILE_GIVEN = 0;
     
     /*
-     *Used in isPersonDataExtractableFrom(String personData)
+      *Used in isPersonDataExtractableFrom(String personData)
      */
     private static final String matchAnyPersonDataPrefix = PERSON_DATA_PREFIX_PHONE + '|' + PERSON_DATA_PREFIX_EMAIL;
     
@@ -270,7 +270,7 @@ public class AddressBook {
      * @param args full program arguments passed to application main method
      */
     private static void processProgramArgs(String[] args) {
-        if (args.length >= LIMIT_ARGS) {
+        if (args.length >= MAX_ARGS) {
             showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
             exitProgram();
         }
