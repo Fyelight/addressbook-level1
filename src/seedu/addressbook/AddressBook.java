@@ -24,6 +24,7 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.Comparator;
 
 /*
  * NOTE : =============================================================
@@ -96,6 +97,7 @@ public class AddressBook {
     // These are the prefix strings to define the data type of a command parameter
     private static final String PERSON_DATA_PREFIX_PHONE = "p/";
     private static final String PERSON_DATA_PREFIX_EMAIL = "e/";
+    private static final String PERSON_DATA_PREFIX_DOB = "b/";
 
     private static final String PERSON_STRING_REPRESENTATION = "%1$s " // name
                                                             + PERSON_DATA_PREFIX_PHONE + "%2$s " // phone
@@ -133,7 +135,19 @@ public class AddressBook {
 
     private static final String COMMAND_EXIT_WORD = "exit";
     private static final String COMMAND_EXIT_DESC = "Exits the program.";
-    private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD;
+    private static final String COMMAND_EXIT_EXAMPLE = COMMAND_EXIT_WORD; 
+
+    private static final String COMMAND_SORT_WORD = "sort";
+	private static final String COMMAND_SORT_DESC = "Displays all persons as a sorted list with index numbers.";
+	private static final String COMMAND_SORT_EXAMPLE = COMMAND_SORT_WORD;
+	
+	private static final String COMMAND_EDIT_WORD = "edit";
+	private static final String COMMAND_EDIT_DESC = "Edits a person identified by the index number used in "
+	  											  + "the last find/list call.";
+	private static final String COMMAND_EDIT_PARAMETERS = "INDEX EDITED_NAME "
+	 													+ PERSON_DATA_PREFIX_PHONE + "EDITED_PHONE_NUMBER "
+														+ PERSON_DATA_PREFIX_EMAIL + "EDITED_EMAIL";
+	private static final String COMMAND_EDIT_EXAMPLE = COMMAND_EDIT_WORD + " 1";
 
     private static final String DIVIDER = "===================================================";
 
