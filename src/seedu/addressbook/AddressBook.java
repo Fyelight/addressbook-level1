@@ -949,7 +949,7 @@ public class AddressBook {
         // check that the constructed person is valid
         return isPersonDataValid(decodedPerson) ? Optional.of(decodedPerson) : Optional.empty();
     }
-
+    
     /**
      * Decodes persons from a list of string representations.
      *
@@ -1049,9 +1049,9 @@ public class AddressBook {
      * @param person String array representing the person (used in internal data)
      */
     private static boolean isPersonDataValid(String[] person) {
-        return isPersonNameValid(person[PERSON_DATA_INDEX_NAME])
-                && isPersonPhoneValid(person[PERSON_DATA_INDEX_PHONE])
-                && isPersonEmailValid(person[PERSON_DATA_INDEX_EMAIL]);
+        return isPersonNameValid(getNameFromPerson(person))
+                && isPersonPhoneValid(getPhoneFromPerson(person))
+                && isPersonEmailValid(getEmailFromPerson(person));
     }
 
     /*
