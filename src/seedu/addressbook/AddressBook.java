@@ -160,6 +160,14 @@ public class AddressBook {
      */
     private static final char INPUT_COMMENT_MARKER = '#';
 
+    
+    /*
+     * Number of arguments inputed to determine if there are files given
+     */
+    private static final int LIMIT_ARGS = 2;
+    private static final int FILE_GIVEN = 1;
+    private static final int NO_FILE_GIVEN = 0;
+    
     /*
      * This variable is declared for the whole class (instead of declaring it
      * inside the readUserCommand() method to facilitate automated testing using
@@ -257,16 +265,16 @@ public class AddressBook {
      * @param args full program arguments passed to application main method
      */
     private static void processProgramArgs(String[] args) {
-        if (args.length >= 2) {
+        if (args.length >= LIMIT_ARGS) {
             showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
             exitProgram();
         }
 
-        if (args.length == 1) {
+        if (args.length == FILE_GIVEN) {
             setupGivenFileForStorage(args[0]);
         }
 
-        if(args.length == 0) {
+        if(args.length == NO_FILE_GIVEN) {
             setupDefaultFileForStorage();
         }
     }
