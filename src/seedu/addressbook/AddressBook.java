@@ -974,13 +974,13 @@ public class AddressBook {
      * Format is [name] p/[phone] e/[email], phone and email positions can be swapped.
      *
      * @param personData person string representation
-     */
+     */ 
     private static boolean isPersonDataExtractableFrom(String personData) {
         final String[] splitArgs = personData.trim().split(matchAnyPersonDataPrefix);
-        return splitArgs.length == 3 // 3 arguments
-                && !splitArgs[0].isEmpty() // non-empty arguments
-                && !splitArgs[1].isEmpty()
-                && !splitArgs[2].isEmpty();
+        return splitArgs.length == PERSON_DATA_COUNT // 3 arguments
+                && !splitArgs[PERSON_DATA_INDEX_NAME].isEmpty() // non-empty arguments
+                && !splitArgs[PERSON_DATA_INDEX_PHONE].isEmpty()
+                && !splitArgs[PERSON_DATA_INDEX_EMAIL].isEmpty();
     }
 
     /**
