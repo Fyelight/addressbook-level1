@@ -724,7 +724,15 @@ public class AddressBook {
         }
 
         showToUser(String.format(MESSAGE_ERROR_MISSING_STORAGE_FILE, filePath));
+        createStorageFile(filePath, storageFile);
+    }
 
+	/**
+	 * Creates Storage File
+	 * @param filePath
+	 * @param storageFile
+	 */
+	private static void createStorageFile(String filePath, final File storageFile) {
         try {
             storageFile.createNewFile();
             showToUser(String.format(MESSAGE_STORAGE_FILE_CREATED, filePath));
@@ -732,7 +740,7 @@ public class AddressBook {
             showToUser(String.format(MESSAGE_ERROR_CREATING_STORAGE_FILE, filePath));
             exitProgram();
         }
-    }
+	}
 
     /**
      * Converts contents of a file into a list of persons.
