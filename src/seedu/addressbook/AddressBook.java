@@ -19,9 +19,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /*
  * NOTE : =============================================================
@@ -484,14 +486,25 @@ public class AddressBook {
      */
     private static ArrayList<String[]> getPersonsWithNameContainingAnyKeyword(Collection<String> keywords) {
         final ArrayList<String[]> matchedPersons = new ArrayList<>();
+        Collection<String> lowerCaseKeywords = convertPersonsSearchKeywordsToLowerCase(keywords);
         for (String[] person : getAllPersonsInAddressBook()) {
-            final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person).toLowerCase()));
+            if (!Collections.disjoint(wordsInName, lowerCaseKeywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
     }
+
+	/**
+	 * Converts all keywords in Collection<String> to lower case for case insensitive searching
+	 * 
+	 * @param keywords
+	 * @return lowerCaseKeywords
+	 */
+	private static List<String> convertPersonsSearchKeywordsToLowerCase(Collection<String> keywords) {
+		return keywords.stream().map(person->person.toLowerCase()).collect(Collectors.toList());
+	}
 
     /**
      * Deletes person identified using last displayed index.
