@@ -169,6 +169,11 @@ public class AddressBook {
     private static final int NO_FILE_GIVEN = 0;
     
     /*
+     *Used in isPersonDataExtractableFrom(String personData)
+     */
+    private static final String matchAnyPersonDataPrefix = PERSON_DATA_PREFIX_PHONE + '|' + PERSON_DATA_PREFIX_EMAIL;
+    
+    /*
      * This variable is declared for the whole class (instead of declaring it
      * inside the readUserCommand() method to facilitate automated testing using
      * the I/O redirection technique. If not, only the first line of the input
@@ -963,7 +968,6 @@ public class AddressBook {
      * @param personData person string representation
      */
     private static boolean isPersonDataExtractableFrom(String personData) {
-        final String matchAnyPersonDataPrefix = PERSON_DATA_PREFIX_PHONE + '|' + PERSON_DATA_PREFIX_EMAIL;
         final String[] splitArgs = personData.trim().split(matchAnyPersonDataPrefix);
         return splitArgs.length == 3 // 3 arguments
                 && !splitArgs[0].isEmpty() // non-empty arguments
